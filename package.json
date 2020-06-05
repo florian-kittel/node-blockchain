@@ -1,0 +1,20 @@
+{
+  "name": "node-blockchain",
+  "version": "0.1.0",
+  "description": "An example blockchain based on a tutorial",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "blockchain",
+    "example"
+  ],
+  "author": "Florian Kittel",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^4.0.0"
+  }
+}
