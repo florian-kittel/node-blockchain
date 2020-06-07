@@ -41,16 +41,16 @@ class Block {
     this.transactions = transactions;
     this.previousHash = previousHash;
     this.hash = this.calculateHash();
-    this.noce = 0;
+    this.nonce = 0;
   }
 
   calculateHash() {
-    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.transactions) + this.noce).toString();
+    return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.transactions) + this.nonce).toString();
   }
 
   mineBlock(difficulty) {
     while (this.hash.substring(0, difficulty) !== Array(difficulty + 1).join('0')) {
-      this.noce++;
+      this.nonce++;
       this.hash = this.calculateHash();
     }
 
@@ -69,10 +69,10 @@ class Block {
 
 }
 
-class Blockhcain {
+class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
-    this.difficulty = 2;
+    this.difficulty = 4;
     this.pendingTransactions = [];
     this.miningReward = 100;
   }
@@ -154,5 +154,5 @@ class Blockhcain {
   }
 }
 
-module.exports.Blockhcain = Blockhcain;
+module.exports.Blockchain = Blockchain;
 module.exports.Transaction = Transaction;

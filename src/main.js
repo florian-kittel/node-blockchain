@@ -2,7 +2,7 @@ const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
 const {
-  Blockhcain,
+  Blockchain,
   Transaction
 } = require('./blockchain');
 
@@ -10,7 +10,7 @@ const {
 const myKey = ec.keyFromPrivate('8e72d21d875644dd4a98f3fa665b31bd7b6413799d96b5677884626e062ecca2');
 const myWalletAddress = myKey.getPublic('hex');
 
-let myCoin = new Blockhcain();
+let myCoin = new Blockchain();
 
 const tx1 = new Transaction(myWalletAddress, 'public key goes here', 10);
 tx1.signTransaction(myKey);
