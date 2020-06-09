@@ -3,14 +3,14 @@ const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
 class Transaction {
-  constructor(fromAddress, toAddress, amout) {
+  constructor(fromAddress, toAddress, amount) {
     this.fromAddress = fromAddress;
     this.toAddress = toAddress;
-    this.amout = amout;
+    this.amount = amount;
   }
 
   calculateHash() {
-    return SHA256(this.fromAddress + this.toAddress + this.amout).toString();
+    return SHA256(this.fromAddress + this.toAddress + this.amount).toString();
   }
 
   signTransaction(signingKey) {
@@ -120,11 +120,11 @@ class Blockchain {
     for (const block of this.chain) {
       for (const trans of block.transactions) {
         if (trans.fromAddress === address) {
-          balance -= trans.amout;
+          balance -= trans.amount;
         }
 
         if (trans.toAddress === address) {
-          balance += trans.amout;
+          balance += trans.amount;
         }
       }
     }
