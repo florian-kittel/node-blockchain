@@ -1,13 +1,24 @@
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
+const bs58 = require('bs58')
 
+// Reference: https://asecuritysite.com/encryption/bit_keys
 
-const key = ec.genKeyPair();
-const publicKey = key.getPublic('hex');
-const privateKey = key.getPrivate('hex');
+class Keygenerator {
+  constructor() {}
 
-console.log();
-console.log('Private key', privateKey);
+  generate() {
+    const key = ec.genKeyPair();
+    const publicKey = key.getPublic('hex');
+    const privateKey = key.getPrivate('hex');
 
-console.log();
-console.log('Public key', publicKey);
+    return {
+      privateKey,
+      publicKey,
+      WiF: bs58.encode(Buffer.from(privateKey, 'hex')),
+      address: bs58.encode(Buffer.from(publicKey, 'hex')),
+    }
+  }
+}
+
+module.exports.Keygenerator = Keygenerator;
