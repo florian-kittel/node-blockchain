@@ -17,6 +17,6 @@
   "dependencies": {
     "bs58": "^4.0.1",
     "crypto-js": "^4.0.0",
-    "elliptic": "^6.5.3"
+    "elliptic": "^6.5.4"
   }
 }
